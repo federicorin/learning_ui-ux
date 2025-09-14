@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proto-persona - Roberto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            transform: scale(1.1);
+            background: white;
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        
+        .main-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header-section {
+            border-bottom: 3px solid #4CAF50;
+            padding: 40px;
+        }
+        
+        .avatar-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .avatar-large::before {
+            content: '👨‍💻';
+        }
+        
+        .persona-name {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .persona-info {
+            color: #7f8c8d;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            height: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .info-card.metas { border-left: 5px solid #3498db; }
+        .info-card.biografia { border-left: 5px solid #e74c3c; }
+        .info-card.frustraciones { border-left: 5px solid #f39c12; }
+        .info-card.personalidad { border-left: 5px solid #9b59b6; }
+        .info-card.tecnologia { border-left: 5px solid #2ecc71; }
+        
+        .card-title {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-item {
+            color: #555;
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 8px;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.4;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease;
+        }
+        
+        .card-item:hover {
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .card-item::before {
+            content: '•';
+            position: absolute;
+            left: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .metas .card-item::before { color: #3498db; }
+        .biografia .card-item::before { color: #e74c3c; }
+        .frustraciones .card-item::before { color: #f39c12; }
+        .personalidad .card-item::before { color: #9b59b6; }
+        .tecnologia .card-item::before { color: #2ecc71; }
+        
+        .card-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-section {
+                padding: 30px 20px;
+                text-align: center;
+            }
+            
+            .avatar-large {
+                margin-bottom: 20px;
+                width: 100px;
+                height: 100px;
+                font-size: 50px;
+            }
+            
+            .persona-name {
+                font-size: 2rem;
+            }
+            
+            .persona-info {
+                font-size: 1.1rem;
+            }
+            
+            .info-card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .persona-name {
+                font-size: 1.8rem;
+            }
+            
+            .info-card {
+                padding: 15px;
+            }
+            
+            .card-title {
+                font-size: 1rem;
+            }
+            
+            .card-item {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+                padding-left: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">←</a>
+    
+    <div class="container-fluid px-3 px-md-4">
+        <div class="main-container mx-auto" style="max-width: 1000px;">
+            
+            <!-- Header Section -->
+            <div class="header-section">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-auto text-center text-md-start mb-3 mb-md-0">
+                        <div class="avatar-large"></div>
+                    </div>
+                    <div class="col-12 col-md text-center text-md-start">
+                        <h1 class="persona-name">Roberto</h1>
+                        <p class="persona-info"><strong>28 años</strong></p>
+                        <p class="persona-info">Desarrollador Web</p>
+                        <p class="persona-info">📍 San José, CA</p>
+                        <p class="persona-info mb-0">⭐ Fan de Star Wars</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Info Cards Grid -->
+            <div class="p-4">
+                <div class="row g-4">
+                    
+                    <!-- Metas -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="info-card metas">
+                            <h3 class="card-title">METAS</h3>
+                            <div class="card-item">Mejorar sus habilidades en desarrollo frontend</div>
+                            <div class="card-item">Trabajar en proyectos innovadores</div>
+                            <div class="card-item">Obtener certificaciones técnicas</div>
+                            <div class="card-item">Liderar un equipo de desarrollo</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Biografía -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="info-card biografia">
+                            <h3 class="card-title">BIOGRAFÍA</h3>
+                            <div class="card-item">Licenciatura en Ciencias de la Computación</div>
+                            <div class="card-item">3 años de experiencia profesional</div>
+                            <div class="card-item">Trabaja remotamente desde casa</div>
+                            <div class="card-item">Le gusta el gaming en tiempo libre</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Frustraciones -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="info-card frustraciones">
+                            <h3 class="card-title">FRUSTRACIONES</h3>
+                            <div class="card-item">Código legacy mal documentado</div>
+                            <div class="card-item">Reuniones innecesarias que interrumpen su flujo</div>
+                            <div class="card-item">Falta de tiempo para aprender nuevas tecnologías</div>
+                            <div class="card-item">Comunicación deficiente con stakeholders</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Personalidad -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="info-card personalidad">
+                            <h3 class="card-title">PERSONALIDAD</h3>
+                            <div class="card-item">Analítico y orientado a detalles</div>
+                            <div class="card-item">Introvertido pero colaborativo</div>
+                            <div class="card-item">Perfeccionista en su trabajo</div>
+                            <div class="card-item">Curioso por nuevas tecnologías</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tecnología -->
+                    <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                        <div class="info-card tecnologia">
+                            <h3 class="card-title">TECNOLOGÍA</h3>
+                            <div class="card-item">JavaScript, React, Node.js</div>
+                            <div class="card-item">Git, Docker, AWS</div>
+                            <div class="card-item">VS Code como editor principal</div>
+                            <div class="card-item">Slack y Zoom para comunicación</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
